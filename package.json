@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/erayushs/react/issues"
   },
-  "homepage": "https://github.com/erayushs/react#readme"
+  "homepage": "https://github.com/erayushs/react#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
 }
