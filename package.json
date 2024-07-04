@@ -2,10 +2,18 @@
   "name": "main",
   "version": "1.0.0",
   "description": "\"React practice\"",
-  "main": "index.js",
+  "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Ayush Singh",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erayushs/react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/erayushs/react/issues"
+  },
+  "homepage": "https://github.com/erayushs/react#readme"
 }
