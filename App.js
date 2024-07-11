@@ -1301,7 +1301,10 @@ const SearchBar = () => {
   );
 };
 
-const Card = (props) => {
+const Card = ({ data }) => {
+  console.log(data);
+
+  const { name, cloudinaryImageId, avgRating, areaName, cuisines } = data?.info;
   return (
     <div className="card">
       <div className="card-img">
@@ -1309,15 +1312,16 @@ const Card = (props) => {
           className="card-img"
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-            props.data[1].info.cloudinaryImageId
+            cloudinaryImageId
           }
         ></img>
       </div>
 
       <div className="card-items">
-        <p>{props.data[1].info.name}</p>
-        <p>Rating: 4.3</p>
-        <p>Kakadeo, Kanpur</p>
+        <p>{name}</p>
+        <p>{cuisines.join(", ")}</p>
+        <p>Avg Rating : {avgRating}</p>
+        <p>{areaName}, Kanpur</p>
       </div>
     </div>
   );
@@ -1331,7 +1335,9 @@ const App = () => {
       <Navbar />
       <SearchBar />
       <div className="card-divs">
-        <Card data={data} />
+        {data.map((data) => (
+          <Card key={data.info.id} data={data} />
+        ))}
       </div>
     </div>
   );
