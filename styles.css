@@ -91,11 +91,17 @@ h1 {
   background-color: #f0f0f0;
 }
 
+.card-img-div {
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
 .card-img {
-  width: 200px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
   transition: ease 0.3s;
   overflow: hidden;
-  margin-bottom: 8px;
 }
 
 .card-img:hover {
