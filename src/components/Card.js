@@ -1,8 +1,6 @@
 import { CDN_LINK } from "../utils/constants";
 
 const Card = ({ data }) => {
-  console.log(data);
-
   const { name, cloudinaryImageId, avgRating, areaName, cuisines, costForTwo } =
     data?.info;
   return (
