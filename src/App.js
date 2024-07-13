@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
@@ -27,12 +27,25 @@ import data from "./utils/mockData";
 // };
 
 const App = () => {
+  const [res, setRes] = useState(data);
+
+  const handleFilter = () => {
+    const filteredList = data.filter((res) => res.info.avgRating >= 4.6);
+
+    console.log(filteredList);
+
+    setRes(filteredList);
+  };
+
   return (
     <div>
       <Navbar />
       <SearchBar />
+
+      <button onClick={handleFilter}>Top Rated</button>
+
       <div className="card-divs">
-        {data.map((data) => (
+        {res.map((data) => (
           <Card key={data.info.id} data={data} />
         ))}
       </div>
