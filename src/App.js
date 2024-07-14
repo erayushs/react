@@ -36,7 +36,7 @@ const App = () => {
 
     console.log(filteredList);
 
-    setRes(filteredList);
+    setFilteredRes(filteredList);
   };
 
   useEffect(() => {
