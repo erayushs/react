@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
-import SearchBar from "./components/SearchBar";
 import Card from "./components/Card";
 import Shimmer from "./components/Shimmer";
 // import data from "./utils/mockData";
@@ -29,6 +28,8 @@ import Shimmer from "./components/Shimmer";
 
 const App = () => {
   const [res, setRes] = useState([]);
+  const [filteredRes, setFilteredRes] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const handleFilter = () => {
     const filteredList = res.filter((res) => res.info.avgRating >= 4.5);
@@ -54,6 +55,7 @@ const App = () => {
         ?.restaurants;
 
     setRes(swiggyData);
+    setFilteredRes(swiggyData);
   };
 
   // if (res.length === 0) {
@@ -63,7 +65,28 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <SearchBar />
+      <div className="search-div">
+        <input
+          className="inputBox"
+          placeholder="Search Restaurant"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        ></input>
+        <button
+          id="btn"
+          onClick={() => {
+            const filterRes = res.filter((data) => {
+              return data?.info?.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            });
+
+            setFilteredRes(filterRes);
+          }}
+        >
+          Search
+        </button>
+      </div>
       <div className="filterDiv">
         <button id="filter-btn" onClick={handleFilter}>
           Top Rated
@@ -74,7 +97,7 @@ const App = () => {
         {res.length === 0 ? (
           <Shimmer />
         ) : (
-          res.map((data) => <Card key={data?.info?.id} data={data} />)
+          filteredRes.map((data) => <Card key={data?.info?.id} data={data} />)
         )}
       </div>
     </div>
