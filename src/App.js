@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import Card from "./components/Card";
-import data from "./utils/mockData";
+import Shimmer from "./components/Shimmer";
+// import data from "./utils/mockData";
 
 // const ele = React.createElement("h1", { id: "h1Ele" }, "Hello from React 🚀");
 
@@ -27,27 +28,54 @@ import data from "./utils/mockData";
 // };
 
 const App = () => {
-  const [res, setRes] = useState(data);
+  const [res, setRes] = useState([]);
 
   const handleFilter = () => {
-    const filteredList = data.filter((res) => res.info.avgRating >= 4.6);
+    const filteredList = res.filter((res) => res.info.avgRating >= 4.5);
 
     console.log(filteredList);
 
     setRes(filteredList);
   };
 
+  useEffect(() => {
+    fetchApi();
+  }, []);
+
+  const fetchApi = async () => {
+    const apiData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.49690&lng=80.32460&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const response = await apiData.json();
+
+    let swiggyData =
+      response?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+
+    setRes(swiggyData);
+  };
+
+  // if (res.length === 0) {
+  //   return <Shimmer />;
+  // }
+
   return (
     <div>
       <Navbar />
       <SearchBar />
-
-      <button onClick={handleFilter}>Top Rated</button>
+      <div className="filterDiv">
+        <button id="filter-btn" onClick={handleFilter}>
+          Top Rated
+        </button>
+      </div>
 
       <div className="card-divs">
-        {res.map((data) => (
-          <Card key={data.info.id} data={data} />
-        ))}
+        {res.length === 0 ? (
+          <Shimmer />
+        ) : (
+          res.map((data) => <Card key={data?.info?.id} data={data} />)
+        )}
       </div>
     </div>
   );

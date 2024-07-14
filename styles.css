@@ -84,10 +84,10 @@ h1 {
   margin: 15px;
   padding: 4px;
   width: 220px;
-  height: 300px;
+  height: 360px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #f0f0f0;
 }
@@ -122,4 +122,40 @@ h1 {
 
 .card:hover {
   cursor: pointer;
+}
+
+.filterDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#filter-btn {
+  margin: 1rem;
+  padding: 4px;
+}
+
+.shimmer-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 13rem; */
+}
+
+.shimmer-child {
+  margin: 15px;
+  padding: 4px;
+  width: 220px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+#btn,
+.inputBox,
+.card-divs {
+  font-family: "Quicksand", sans-serif;
 }

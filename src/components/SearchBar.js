@@ -1,14 +1,8 @@
 const SearchBar = () => {
   return (
     <div className="search-div">
-      <input
-        className="inputBox"
-        style={{ fontFamily: "Quicksand" }}
-        placeholder="Search Restaurant"
-      ></input>
-      <button id="btn" style={{ fontFamily: "Quicksand" }}>
-        Search
-      </button>
+      <input className="inputBox" placeholder="Search Restaurant"></input>
+      <button id="btn">Search</button>
     </div>
   );
 };
