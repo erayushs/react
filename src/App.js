@@ -3,28 +3,7 @@ import ReactDOM from "react-dom/client";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import Shimmer from "./components/Shimmer";
-// import data from "./utils/mockData";
-
-// const ele = React.createElement("h1", { id: "h1Ele" }, "Hello from React 🚀");
-
-// const ele = <h1 id="h1Ele">Hello React from JSX 🚀</h1>; //It's a react element
-
-// const HeadingComponent = () => {
-//   return <h1>My new Heading Component</h1>;
-// };
-
-// const DivComponent = () => {
-//   return (
-//     <div>
-//       <HeadingComponent />
-//       {console.log("hELLO wOELR 🚀")}
-//       <p>
-//         Component Composition is Composing two compopents inside other
-//         compopents, Here Heading compopent is composed inside Div Component.
-//       </p>
-//     </div>
-//   );
-// };
+import { createBrowserRouter } from "react-router-dom";
 
 const App = () => {
   const [res, setRes] = useState([]);
@@ -57,10 +36,6 @@ const App = () => {
     setRes(swiggyData);
     setFilteredRes(swiggyData);
   };
-
-  // if (res.length === 0) {
-  //   return <Shimmer />;
-  // }
 
   return (
     <div>
